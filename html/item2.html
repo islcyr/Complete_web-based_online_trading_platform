@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝-商品详情页</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- 头部信息 -->
+    <div class="header_con">
+        <div class="header">
+            <div class="welcome">欢迎来到淘宝!</div>
+            <div class="user_login">
+                <a href="">登录</a>
+                <span>|</span>
+                <a href="">注册</a>
+                <span>|</span>
+                <a href="">我的购物车</a>
+                <span>|</span>
+                <a href="">我的订单</a>
+            </div>
+        </div>
+    </div>
+    <div class="search_bar clearfix">
+        <a href="#" class="logo fl"><img src="../images/tb.png"></a>
+        <div class="search_con fl">
+            <input type="text" class="input_text fl" placeholder="搜索商品">
+            <input type="button" class="input_btn fr" value="搜索">
+        </div>
+        <div class="guest_card fr">
+            <a href="cart.html" class="card_name fl">我的购物车</a>
+        </div>
+    </div>
+    <!-- 商品信息栏 -->
+    <div class="navbar_con">
+        <div class="navbar clearfix">
+            <div class="subnav_con fl">
+                <h1>商品详情<i></i></h1>
+            </div>
+            <ul class="navlist fl">
+                <li><a href="">首页</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="submena clearfix">
+        <a href=" ">全部商品</a>
+        <span>></span>
+        <a href=" ">商品详情</a>
+    </div>
+    <div class="center_con clearfix">
+        <div class="main_menu fl"><img src="../images/2.jpg" width="250px" height="350px"></div>
+        <div class="goods_detail_list fr">
+            <h3>白雪公主复古娃娃领毛呢外套</h3>
+            <p>小众的绿色系色彩搭配， 穿出不一样的少女风格。气质典雅的温柔造型，散发着森系自然的悠闲气息。
+            </p>
+            <div class="prize_bar">
+                <div class="show_single_price fl">单价：</div>
+                <div class="show_prize fl">￥<em class="show_p">338</em></div>
+                <div class="show_unit fl">单位：件</div>
+            </div>
+            <div class="goods_num clearfix">
+                <div class="num_name fl">数量：</div>
+                <div class="num_add fl">
+                    <input type="tel" id="number" class="num_show fl" value="1">
+                    <a href="javascript:;" class="add fr">+</a>
+                    <a href="javascript:;" class="minus fr">-</a>
+                </div>
+            </div>
+            <div class="total">总价： <em id="total">￥338</em></div>
+            <div class="operate_btn">
+                <!-- <a href="" class="buy_btn">立即购买</a> -->
+                <a href="" class="add_cart">加入购物车</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $(".add").click(function() {
+                var num = $("#number").attr("value");
+                document.getElementById("number").setAttribute('value', String(parseInt(num) + 1));
+                var price = $(this).parents().find(".show_p").text();
+                var total = "￥" + String((parseInt(num) + 1) * parseInt(price));
+                $("#total").html(total);
+            });
+            $(".minus").click(function() {
+                var num = $("#number").attr("value");
+                if (parseInt(num) > 1) {
+                    document.getElementById("number").setAttribute('value', String(parseInt(num) - 1));
+                    var price = $(this).parents().find(".show_p").text();
+                    var total = "￥" + String((parseInt(num) - 1) * parseInt(price));
+                    $("#total").html(total);
+                }
+            });
+            $(".add_cart").click(function () {
+                $.post("php/item.php", {
+                    idinput: 2,
+                    numinput: $(this).parent().siblings(".goods_num").find(".num_show").attr("value"),
+                },
+                    function (data, status) {
+                        if (data == "请先登录！") {
+                            window.location.href = "login.html";
+                            alert(data);
+                        }
+                        alert("添加成功！");
+                    }
+                );
+            });
+        })
+    </script>
+</body>
+
+</html>

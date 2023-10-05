@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>支付宝支付页面</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            font-family: "宋体", Arial;
+            font-size: 12px;
+            text-align: left;
+            background: #ececec;
+            color: #878787;
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        .clear {
+            clear: both;
+            font-size: 1px;
+            height: 0;
+            visibility: hidden;
+            line-height: 0;
+        }
+        
+        .top_box {
+            background: #3366ff;
+            height: 103px;
+        }
+        
+        .in_box {
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+            background: #fff;
+            margin-top: -50px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+        
+        .con_1 {
+            background: #dcefff;
+            height: 50px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px 5px 0px 0px;
+            -moz-border-radius: 5px;
+        }
+        
+        .con_list {
+            padding: 30px 20px 40px 20px;
+        }
+        
+        .con_list ul li {
+            float: left;
+            width: 350px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-bottom: dotted 1px #cecece;
+            height: 58px;
+            line-height: 58px;
+            font-size: 16px;
+            color: #3f3f3f;
+            overflow: hidden;
+        }
+        
+        .spanyellpw {
+            color: #ff6600;
+        }
+        
+        .spansize-24 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top_box"></div>
+    <div class="in_box">
+        <div class="con_1"></div>
+        <div class="con_list">
+            <ul>
+                <li>订单号：FC15076113483271</li>
+                <li>支付方式： <span class="spanyellpw">支付宝支付</span></li>
+                <li>订单时间： 2017-10-10 12:55:49</li>
+                <li>金额： <span class="spanyellpw spansize-24">58.0 元</span></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div align="center" id="qrcode">
+            <p id="hint">请使用支付宝“扫一扫”扫描二维码完成支付</p>
+            <div>
+                <div id="qrcode"></div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

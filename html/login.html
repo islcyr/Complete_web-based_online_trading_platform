@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+</head>
+
+<body>
+    <div id="login_frame">
+
+        <p id="image_logo"><img src="../images/hit.png"></p>
+
+        <form method="post" action="login.js">
+
+            <p><label class="label_input">用户名</label><input type="text" id="username" class="text_field" /></p>
+            <p><label class="label_input">密码</label><input type="password" id="password" class="text_field" /></p>
+
+            <div id="login_control">
+                <input type="button" id="btn_login" value="登录" onclick="login();" />
+                <a id="forget_pwd" href="register.html">没有账户？免费注册</a>
+                <!-- <a id="forget_pwd" href="forget_pwd.html">忘记密码？</a> -->
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function login() {
+            $.ajaxSetup({
+                async: false
+            });
+            var challenge;
+            $.get("php/loginhandler.php", function (data, status) {
+                challenge = data;
+                var keyhash = CryptoJS.SHA256($("input#password").val()).toString();
+                var challengehash = CryptoJS.SHA256(challenge + keyhash).toString();
+                $.post("php/loginhandler.php", {
+                    nameinput: $('input#username').val(),
+                    passwdinput: challengehash
+                },
+                    function (data, status) {
+                        if (data == "True")
+                            window.open("Tmail.html");
+                        else
+                            // alert(data);
+                            alert("登陆失败");
+                    }
+                );
+            }
+            )
+        }
+    </script>
+</body>
+
+</html>

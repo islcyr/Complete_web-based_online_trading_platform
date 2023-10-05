@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: 0;
+}
+
+body {
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #666;
+}
+
+a:link {
+	color: #3c3c3c;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #3c3c3c;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ff5000;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #ff5000;
+	text-decoration: none;
+}
+
+.nav {
+	height: 30px;
+	background-color: #f1f1f1;
+}
+
+
+.warp {
+	width: 1000px;
+	margin: 0px auto;
+}
+
+.nav_ul1, .nav_ul2 li {
+	float: left;
+}
+
+.nav_ul1 li {
+	float: left;
+	line-height: 30px;
+	margin-right: 20px;
+}
+
+.nav_ul1 a, .nav_ul2 a, .nav_ul2 span {
+	font-size: 12px;
+	color: gray;
+}
+
+.nav_ul2 {
+	float: right;
+}
+
+.nav_ul2 li, .nav_ul2 span {
+	line-height: 30px;
+	margin-left: 15px;
+}
+
+.nav a:hover {
+	color: red;
+}
+
+
+.top {
+    width: 100%;
+    height: 85px;
+}
+
+.top .t_header {
+    width: 1000px;
+    height: 85px;
+    margin: 0 auto;
+}
+
+.top .t_header .logo {
+    width: 200px;
+    height: 85px;
+    margin-top: 5%;
+    display: block;
+    line-height: 85px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 80px;
+    color: red;
+}
+
+
+/* .banner {
+    width: 100%;
+    height: 160px;
+    background: url("images/banner.jpg")
+} */
+
+.shop {
+    width: 1000px;
+    height: 340px;
+    margin: 10px auto;
+}
+
+.shop ul li {
+    border: 1px solid #efefef;
+    list-style: none;
+    width: 200px;
+    padding: 5px;
+    float: left;
+    margin: 0px 10px;
+}
+
+.shop ul li:hover {
+    border: 1px solid red;
+}
+
+.shop ul li .s_price {
+    font-size: 20px;
+    color: #C00;
+}
+
+.shop ul li .s_title {
+    line-height: 30px;
+}
+
+.shop ul li p {
+    font-size: 14px;
+}
+
+.shop ul li .s_add {
+    width: 200px;
+    height: 36px;
+    display: block;
+    text-align: center;
+    background: #bc0000;
+    line-height: 36px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.shop ul li .s_add:hover {
+    background: #A80000;
+}
+
+.car {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.car .c_tools {
+    width: 40px;
+    height: 100%;
+    background: #000;
+    float: left;
+}
+
+.car .c_con {
+    width: 260px;
+    height: 100%;
+    float: left;
+}
+
+.car .c_tools .c_btn {
+    width: 35px;
+    height: 110px;
+    display: block;
+    margin-top: 300px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+}
+
+.car .c_tools .c_btn:hover {
+    background: #A80000;
+}
+
+.car .c_tools .c_btn i {
+    width: 35px;
+    height: 35px;
+    display: block;
+    text-align: center;
+    line-height: 35px;
+    font-size: 24px;
+    color: #fff;
+}
+
+.car .c_tools .c_btn span {
+    width: 15px;
+    display: block;
+    margin: 5px auto;
+}
+
+.car .c_con ul {
+    overflow: auto;
+    height: 100%;
+}
+
+.car .c_con ul li {
+    list-style: none;
+    height: auto;
+    width: 260px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    margin-bottom: 5px;
+}
+
+.car .con .cart-item-list li .cart-item {
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cart-item .cart-item-pic {
+    width: 45px;
+    height: 60px;
+    float: left;
+}
+
+.cart-item .cart-item-info {
+    margin-left: 55px;
+    position: absolute;
+}
+
+.cart-item .cart-item-del {
+    float: right;
+}
+
+.cart-item .cart-item-dell {
+    float: right;
+}
+
+.cart-item-info .cart-item-title {
+    height: 37px;
+    margin-top: 3px;
+}
+
+.cart-item-info .cart-item-price {
+    font-family: Arial;
+    font-weight: 700;
+    color: #515151;
+}
+
+.car .c_con .c_sub {
+    width: 260px;
+    height: 40px;
+    display: block;
+    background: #bc0000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}

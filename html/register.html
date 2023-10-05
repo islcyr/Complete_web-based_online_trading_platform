@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/register.css" />
+    <script type="text/javascript" src="../js/libcert.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+
+<body>
+    <div id="register_frame">
+
+        <p id="image_logo"><img src="../images/hit.png"></p>
+
+        <form method="post">
+
+            <p><label class="label_input">用户名</label><input type="text" id="username" class="text_field" /></p>
+            <p><label class="label_input">密码</label><input type="password" id="password" class="text_field" /></p>
+            <p><label class="label_input">验证密码</label><input type="password" id="repassword" class="text_field" /></p>
+            <p><label class="label_input">邮箱</label><input type="text" id="email" class="text_field" /></p>
+            <!-- <p><label class="label_input">验证码</label><input type="text" id="captcha" class="text_field" /></p> -->
+
+            <div id="login_control">
+                <input type="button" id="btn_register" value="注册" onclick="register();" />
+                <!-- <input type="button" id="send_captcha" value="发送验证码" onclick="sendcaptcha();" /> -->
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var r_pubKey = undefined;
+        var cert = undefined;
+
+        function getPubKey() {
+            if (r_pubKey != undefined)
+                return r_pubKey;
+            getCert("");
+            r_pubKey = cert.getPublicKey();
+            return r_pubKey;
+        }
+
+        function getCert(target) {
+            $.ajax({
+                type: "get",
+                url: target + "php/certificate.php",
+                async: false,
+                success: function (data) {
+                    var certstr = data.replace("-----BEGIN CERTIFICATE-----", "")
+                        .replace("-----END CERTIFICATE-----", "").replace("\r", "").replace("\n", "");
+                    var certab = str2ab(window.atob(certstr));
+                    setCertificateBuffer(certab);
+                    cert = parseCertificate();
+                },
+                error: (error) => console.log(error)
+            });
+        };
+
+
+        async function register() {
+            //var publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA38xQrhIpW4EESOKlAHUT8FPSkCbvoGvmmh9JbhMWOyD0b0l1QKh2keHpBkuOsEyx8TG8mljyuZm3xPxT4wyNn43Ob5OfL2PRVAhS0c/qKPEADt1SNx2/z7oeOAlH6fmCNrh6VPfnQRswTi4ZgIpYwGZkptQy4AjD5z8d9gGPqotI9hml1+EP8zS2NAe1nLPvOqXSwyom7NnLbNid0gZPTIcjCKLSzokOe2rd0gDK9UtnHdmgHGOXR6BT4RNUBJL0wSedH8/8l3xDEM9sbN8hAQ0cOIS7ryq6IeuHqHpIcR4Eu7ISelfqm+TPzBCEtOdfouRffgdSXKcEeJyXDA6ZIQIDAQAB";
+            // 获取公钥的功能还没准备好,应该是CA的一部分,暂时用的生成方法见php文件对应部分
+            // 获取公钥字符串
+            var publicKey = await getPubKey();
+            var ek = await window.crypto.subtle.exportKey("spki", publicKey);
+            var eks = window.btoa(ab2str(ek));  //pubkey
+
+            var rsaoaep = {
+                name: "RSA-OAEP",
+                modulusLength: 2048,
+                publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+                hash: {
+                    name: "SHA-1" 
+                },
+            }
+
+
+            var pubDer = window.atob(eks);
+            var binary = str2ab(pubDer);
+            var pubKey = await window.crypto.subtle.importKey("spki", binary, {
+                name: "RSA-OAEP",
+                hash: "SHA-1"
+            }, true, ["encrypt"]);
+
+            var ktmp = new Uint8Array(32);
+            var ivtmp = new Uint8Array(16);
+            window.crypto.getRandomValues(ktmp);
+            window.crypto.getRandomValues(ivtmp);
+            ktmp = ab2str(ktmp);
+            ivtmp = ab2str(ivtmp);
+            var p = CryptoJS.enc.Latin1.parse(ktmp);
+            var p1 = CryptoJS.enc.Latin1.parse(ivtmp);
+
+            var plaintext = JSON.stringify({
+                name: $('#username').val(),
+                passwd: $("#password").val(),
+                mailadd: $("#email").val()
+            })
+            var encrypt = CryptoJS.AES.encrypt(plaintext, p, {
+                iv: p1,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.ZeroPadding
+            });
+
+            var chead = await window.crypto.subtle.encrypt(rsaoaep, pubKey, str2ab(ktmp));
+            var mid = ab2str(chead);
+            chead = window.btoa(mid);
+            ivtmp = window.btoa(ivtmp);
+            enctext = encrypt.toString();
+            if ($('#password').val() == $('#repassword').val()) {
+                $.post("php/registerhandler.php", {
+                    head: chead,
+                    iv: ivtmp,
+                    body: enctext
+                },
+                    function (data, status) {
+                        alert(data);
+                        if (data == "Register Successful")
+                            window.open("login.html");
+                    });
+            }
+
+        };
+
+        // function sendcaptcha() {
+        //     var tmpcaptcha = gencaptcha();
+        //     // 向邮箱发送验证码,还没准备好,这里先用定值
+        //     //if successful
+        //     captcha = tmpcaptcha;
+        // }
+
+        // function gencaptcha() {
+        //     return 0000;
+        // }
+
+        function str2ab(str) {
+            const buf = new ArrayBuffer(str.length);
+            const bufView = new Uint8Array(buf);
+            for (let i = 0, strLen = str.length; i < strLen; i++) {
+                bufView[i] = str.charCodeAt(i);
+            }
+            return buf;
+        }
+
+        function ab2str(buf) {
+            return String.fromCharCode.apply(null, new Uint8Array(buf));
+        }
+    </script>
+</body>
+
+</html>

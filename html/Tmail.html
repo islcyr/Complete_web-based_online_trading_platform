@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>商城</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/Tmail.css" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="warp">
+            <ul class="nav_ul1">
+                <li><a href="">欢迎来到商城</a></li>
+            </ul>
+            <ul class="nav_ul2">
+                <li><a href="javascript:logout()">登出</a><span>|</span></li>
+                <li><a href="Tmail.html">商城主页</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="top">
+        <div class="t_header">
+            <a href="#" class="logo"><img src="../images/tb.png" alt="" width="146" height="58"></a>
+        </div>
+    </div>
+
+    <!-- <div class="banner"></div> -->
+
+    <div class="shop">
+        <ul>
+            <li>
+                <a class="s_html" id="html" href="item1.html">
+                    <img src="../images/1.jpg" width="200px" height="280px" alt="商品1" />
+                </a>
+                <p class="s_price">￥<span class="s_p">278</span></p>
+                <p class="s_title" id="1">小鹿兔轻lo连衣裙宫廷风裙子</p>
+                <a href="#" class="s_add">加入购物车</a>
+            </li>
+
+            <li>
+                <a href="item2.html" id="html" class="s_html">
+                    <img src="../images/2.jpg" width="200px" height="280px" alt="商品1" />
+                </a>
+                <p class="s_price">￥<span class="s_p">338</span></p>
+                <p class="s_title" id="2">白雪公主复古娃娃领毛呢外套</p>
+                <a href="#" class="s_add">加入购物车</a>
+            </li>
+
+            <li>
+                <a href="item3.html" id="html" class="s_html">
+                    <img src="../images/3.jpg" width="200px" height="280px" alt="商品1" />
+                </a>
+                <p class="s_price">￥<span class="s_p">238</span></p>
+                <p class="s_title" id="3">白雪公主联名撞色连帽套头绒衫</p>
+                <a href="#" class="s_add">加入购物车</a>
+            </li>
+
+            <li>
+                <a href="item4.html" id="html" class="s_html">
+                    <img src="../images/4.jpg" width="200px" height="280px" alt="商品1" />
+                </a>
+                <p class="s_price">￥<span class="s_p">258</span></p>
+                <p class="s_title" id="4">国家宝藏联名秋季古风连衣裙</p>
+                <a href="#" class="s_add">加入购物车</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="car">
+        <!-- <div class="c_tools">
+            <a href="#" class="c_btn">
+                <i class="iconfont"><img src="../images/cart.png" alt="" width="37" height="37"></i>
+                <span>购物车</span>
+            </a>
+        </div> -->
+        <div class="c_con">
+
+            <!-- <ul id="c_ul" class="cart-item-list">
+                <li>
+                    <div id="c_i" class="cart-item">
+                        <div class="cart-item-pic">
+                            <a title="国家宝藏联名秋季古风连衣裙" href="item4.html" target="_blank"><img src="../images/4.jpg" alt=""
+                                    width="45" height="60"></a>
+                        </div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-title"><a title="国家宝藏联名秋季古风连衣裙" href="item4.html"
+                                    target="_blank">国家宝藏联名秋季古风连衣裙</a></div>
+                            <div class="cart-item-price"><em>优惠价格：￥258</em></div>
+                        </div>
+                        <a class="cart-item-del" href="#" title="删除商品"><img src="../images/gb.png" alt="" width="15"
+                                height="15"></a>
+                    </div>
+                </li>
+
+            </ul> -->
+
+            <a href="cart.html" target="_blank" class="c_sub">去购物车结算</a>
+        </div>
+    </div>
+
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        function logout() {
+            $.post("php/logout.php", function (data, status) {
+                if (data == "True")
+                    window.open("login.html");
+                else
+                    alert(data);
+            }
+            );
+        }
+
+        $(function () {
+            $(".s_add").click(function () {
+
+                $.post("php/Tmail.php", {
+                    idinput: $(this).parent().find(".s_title").attr("id")
+                },
+                    function (data, status) {
+                        if (data == "请先登录！") {
+                            window.location.href = "login.html";
+                            alert(data);
+                        }
+                    }
+                );
+
+                // var s_price = $(this).parent().find(".s_p").text();
+                // var s_title = $(this).parent().find(".s_title").text();
+                // var s_html = $("#html").attr("href");
+                // var src = $(this).parent().find("img").attr("src");
+
+                // var newli = document.createElement("li");
+                // newli.innerHTML = "<div id='c_i' class='cart-item'>" +
+                //     "<div class='cart-item-pic'><a title='" + s_title + "'" +
+                //     "href='" + s_html + "' target='_blank'><img " +
+                //     "src='" + src + "' alt='' width='45' height='60'></a>" +
+                //     "</div>" +
+                //     "<div class='cart-item-info'>" +
+                //     "<div class='cart-item-title'><a title='" + s_title + "'" +
+                //     "href='" + s_html + "'" +
+                //     "target='_blank'>" + s_title + "</a></div>" +
+                //     "<div class='cart-item-price'><em>优惠价格：￥" + s_price + "</em></div>" +
+                //     "</div>" +
+                //     "<a class='cart-item-del' href='#' title='删除商品'><img src='../images/gb.png' alt='' width='15'" +
+                //     "height='15'></a>";
+                // document.getElementById("c_ul").appendChild(newli);
+
+
+            });
+            $(".cart-item-del").click(function () {
+                $(this).closest("li").remove();
+            });
+        })
+    </script>
+
+</body>
+
+</html>

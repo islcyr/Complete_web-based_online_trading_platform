@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>购物车</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/cart.css" />
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <!-- <script type="text/javascript" src="../js/cart.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../icon/iconfont.css" /> -->
+</head>
+
+<body onload="myFunction()">
+    <div class="nav">
+        <div class="warp">
+            <ul class="nav_ul1">
+                <li><a href="">欢迎来到商城</a></li>
+            </ul>
+            <ul class="nav_ul2">
+                <li><a href="javascript:logout()">登出</a><span>|</span></li>
+                <li><a href="Tmail.html">商城主页</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="search">
+        <div class="warp">
+            <img src="../images/tb.png" />
+            <div class="search_div">
+                <input type="text" class="search_text" />
+                <input type="button" value="搜索" class="search_but" />
+            </div>
+        </div>
+    </div>
+
+    <div class="title warp">
+        <h3>全部商品</h3>
+    </div>
+
+    <div class="tips warp">
+        <ul>
+            <li><input type="checkbox" checked>全选</li>
+            <li>商品</li>
+            <li>单价</li>
+            <li>数量</li>
+            <li>小计</li>
+            <li>操作</li>
+        </ul>
+
+
+    </div>
+
+    <div class="cart_con" id="cart_con">
+        <div class="info warp" id="info_warp_1">
+            <ul>
+                <li class="info_1"><input type="checkbox" checked> </li>
+                <li class="info_2"> <img src="../images/1.jpg" width="80px" /> </li>
+                <li class="info_3"><a href="item1.html">小鹿兔轻lo连衣裙宫廷风裙子</a></li>
+                <li class="info_4"><a>尺码： S码、M码</a> </li>
+                <li class="info_5">￥278.00</li>
+                <li class="info_6">
+                    <button class="minus">-</button><input type="text" id="1" class="number" value="0"><button
+                        class="add">+</button>
+                </li>
+                <li class="info_7">￥278.00</li>
+                <li class="info_8">
+                    <a class="delete">删除</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="info warp" id="info_warp_2">
+            <ul>
+                <li class="info_1"><input type="checkbox" checked> </li>
+                <li class="info_2"> <img src="../images/2.jpg" width="80px" /> </li>
+                <li class="info_3"><a href="item2.html">白雪公主复古娃娃领毛呢外套</a></li>
+                <li class="info_4"><a>尺码： S码、M码</a> </li>
+                <li class="info_5">￥338.00</li>
+                <li class="info_6">
+                    <button class="minus">-</button><input type="text" id="2" class="number" value="0"><button
+                        class="add">+</button>
+                </li>
+                <li class="info_7">￥338.00</li>
+                <li class="info_8">
+                    <a class="delete">删除</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="info warp" id="info_warp_3">
+            <ul>
+                <li class="info_1"><input type="checkbox" checked> </li>
+                <li class="info_2"> <img src="../images/3.jpg" width="80px" /> </li>
+                <li class="info_3"><a href="item3.html">白雪公主联名撞色连帽套头绒衫</a></li>
+                <li class="info_4"><a>尺码： S码、M码</a> </li>
+                <li class="info_5">￥238.00</li>
+                <li class="info_6">
+                    <button class="minus">-</button><input type="text" id="3" class="number" value="0"><button
+                        class="add">+</button>
+                </li>
+                <li class="info_7">￥238.00</li>
+                <li class="info_8">
+                    <a class="delete">删除</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="info warp" id="info_warp_4">
+            <ul>
+                <li class="info_1"><input type="checkbox" checked> </li>
+                <li class="info_2"> <img src="../images/4.jpg" width="80px" /> </li>
+                <li class="info_3"><a href="item4.html">国家宝藏联名秋季古风连衣裙</a></li>
+                <li class="info_4"><a>尺码： S码、M码</a> </li>
+                <li class="info_5">￥258.00</li>
+                <li class="info_6">
+                    <button class="minus">-</button><input type="text" id="4" class="number" value="0"><button
+                        class="add">+</button>
+                </li>
+                <li class="info_7">￥258.00</li>
+                <li class="info_8">
+                    <a class="delete">删除</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="balance warp">
+        <ul class="balance_ul1">
+            <li><a href="#" class="remove">删除选中商品</a></li>
+            <li><a href="#" class="empty">清空购物车</a></li>
+        </ul>
+        <ul class="balance_ul2">
+
+            <li>已选择<span class="zjcount">0</span>件商品</li>
+            <li>总价：<span class="zjsum">￥0.00</span></li>
+            <li>
+                <button class="butt">去结算</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function myFunction() {
+            $.post("php/cart.php",
+                function (data, status) {
+                    //     if (data == "请先登录！") {
+                    //         window.location.href = "login.html";
+                    var a_json = eval(data);
+                    //alert(a_json);
+                    var goods_names = ["小鹿兔轻lo连衣裙宫廷风裙子", "白雪公主复古娃娃领毛呢外套", "白雪公主联名撞色连帽套头绒衫", "国家宝藏联名秋季古风连衣裙"];
+                    var id = [0, 0, 0, 0];
+                    var i, j;
+                    for (i = 0; i <= 3; i++) {
+                        if (a_json[i][0] != null) {
+                            id[a_json[i][0] - 1] = 1;
+                            if (a_json[i][0] == "1") {
+                                var num = $(".cart_con").find("#1").attr("value");
+                                document.getElementById("1").setAttribute('value', parseFloat(a_json[i][1]));
+                                var total = "￥" + String((parseFloat(a_json[i][2]) * parseFloat(a_json[i][1])).toFixed(2));
+                                $("#info_warp_1").find(".info_7").html(total);
+                            }
+                            if (a_json[i][0] == "2") {
+                                var num = $(".cart_con").find("#2").attr("value");
+                                document.getElementById("2").setAttribute('value', parseFloat(a_json[i][1]));
+                                var total = "￥" + String((parseFloat(a_json[i][2]) * parseFloat(a_json[i][1])).toFixed(2));
+                                $("#info_warp_2").find(".info_7").html(total);
+                            }
+                            if (a_json[i][0] == "3") {
+                                var num = $(".cart_con").find("#3").attr("value");
+                                document.getElementById("3").setAttribute('value', parseFloat(a_json[i][1]));
+                                var total = "￥" + String((parseFloat(a_json[i][2]) * parseFloat(a_json[i][1])).toFixed(2));
+                                $("#info_warp_3").find(".info_7").html(total);
+                            }
+                            if (a_json[i][0] == "4") {
+                                var num = $(".cart_con").find("#4").attr("value");
+                                document.getElementById("4").setAttribute('value', parseFloat(a_json[i][1]));
+                                var total = "￥" + String((parseFloat(a_json[i][2]) * parseFloat(a_json[i][1])).toFixed(2));
+                                $("#info_warp_4").find(".info_7").html(total);
+                            }
+                        } else {
+                            if (id[0] == 0)
+                                $("#info_warp_1").remove();
+                            if (id[1] == 0)
+                                $("#info_warp_2").remove();
+                            if (id[2] == 0)
+                                $("#info_warp_3").remove();
+                            if (id[3] == 0)
+                                $("#info_warp_4").remove();
+                        }
+
+                    }
+                }
+            );
+        }
+
+        function logout() {
+            $.post("php/logout.php", function (data, status) {
+                if (data == "True")
+                    window.open("login.html");
+                else
+                    alert(data);
+            }
+            );
+        }
+
+        $(function () {
+
+            $("input").prop("checked", false);
+
+            $(".tips li input").change(function () {
+                $(".info ul li input").prop("checked", $(this).prop("checked"));
+                $(".info ul li input").each(function (i, ele) {
+                    if (($(ele).prop("checked")) === true) {
+                        $(ele).parent().addClass("click-color");
+                    } else {
+                        $(ele).parent().removeClass("click-color");
+                    }
+                })
+                amount();
+            })
+
+            $(".info ul li input").change(function () {
+                if ($(".info ul li input:checked").length == $(".info ul li input").length) {
+                    //$("li input:checked").length获取被选中复数框的个数
+                    //$("li input").length获取附属框的个数
+                    $(".tips li input").prop("checked", true);//布尔值不添加双引号
+                }
+                else {
+                    $(".tips li input").prop("checked", false);
+                }
+                if (($(this).prop("checked")) === true) {
+                    $(this).parent().addClass("click-color");
+                } else {
+                    $(this).parent().removeClass("click-color");
+                }
+                amount();
+            })
+
+            $(".add").click(function () {
+                var count = $(this).siblings(".number").val();
+                count++;
+                $(this).siblings(".number").val(count);
+                var price = $(this).parent().siblings(".info_5").text();
+                price = price.substr(1);
+                price = (count * price).toFixed(2);
+                price = "￥" + price;
+                $(this).parent().siblings(".info_7").text(price);
+                $.post("php/cartadd.php", {
+                    idinput: $(this).siblings(".number").attr("id")
+                },
+                    function (data, status) {
+                        //     if (data == "请先登录！") {
+                        //         window.location.href = "login.html";}
+                        // alert(data);
+                    })
+                amount();
+            })
+
+
+            $(".minus").click(function () {
+                var count = $(this).siblings(".number").val();
+                if (count == 1) {
+                    return false; //如果值为一 则不执行以下程序
+                }
+                count--;
+                $(this).siblings(".number").val(count);
+                var price = $(this).parent().siblings(".info_5").text();
+                price = price.substr(1);
+                price = (count * price).toFixed(2);
+                price = "￥" + price;
+                $(this).parent().siblings(".info_7").text(price);
+                $.post("php/cartminus.php", {
+                    idinput: $(this).siblings(".number").attr("id")
+                },
+                    function (data, status) {
+                        //     if (data == "请先登录！") {
+                        //         window.location.href = "login.html";}
+                        // alert(data);
+                    })
+                amount();
+            })
+
+
+            $(".number").change(function () {
+                var num = $(this).val();
+                var price = $(this).parent().siblings(".info_5").text();
+                price = price.substr(1);
+                price = (num * price).toFixed(2);
+                price = "￥" + price;
+                $(this).parent().siblings(".info_7").text(price);
+                $.post("php/cartchange.php", {
+                    idinput: $(this).attr("id"),
+                    numinput: num
+                },
+                    function (data, status) {
+                        //     if (data == "请先登录！") {
+                        //         window.location.href = "login.html";}
+                        // alert(data);
+                    })
+                amount();
+            })
+
+            amount();
+
+            function amount() {
+                var numSum = 0;
+                var priceSum = 0;
+                $(".info_7").each(function (i, ele) {
+                    if (($(ele).siblings(".info_1").children("input").prop("checked")) === true) {
+                        priceSum += parseFloat($(ele).text().substr(1));
+                    }
+                })
+                $(".number").each(function (i, ele) {
+                    if (($(ele).closest(".info_6").siblings(".info_1").children("input").prop("checked")) === true) {
+                        numSum += parseInt($(ele).val());
+                    }
+                })
+                $(".zjcount").text(numSum);
+                priceSum = "￥" + (priceSum.toFixed(2));
+                $(".zjsum").text(priceSum);
+            }
+
+            $(".info .delete").click(function () {
+                $(this).closest("div").remove();
+                $.post("php/cartdelete.php", {
+                    idinput: $(this).parent().siblings(".info_6").find(".number").attr("id"),
+                },
+                    function (data, status) {
+                        //     if (data == "请先登录！") {
+                        //         window.location.href = "login.html";}
+                        // alert(data);
+                    })
+                amount();
+            })
+
+            $(".empty").click(function () {
+                $(".info").remove();
+                $.post("php/cartempty.php", {
+                },
+                    function (data, status) {
+                        //     if (data == "请先登录！") {
+                        //         window.location.href = "login.html";}
+                        // alert(data);
+                    })
+                amount();
+            })
+
+            $(".remove").click(function () {
+                $.ajaxSetup({
+                    async: false
+                });
+                $.post("php/cart.php",
+                    function (data, status) {
+                        //     if (data == "请先登录！") {
+                        //         window.location.href = "login.html";
+                        var a_json = eval(data);
+                        var div = document.getElementById("cart_con");
+                        var inputs = div.getElementsByTagName("input");
+                        //定义复选框数组，用来返回  
+                        var checkboxs = new Array();
+                        var nIndex = 0;
+                        for (var i = 0; i < inputs.length; i++) {
+                            //经过type是否为checkbox来判断复选框  
+                            if (inputs[i].type == "checkbox") {
+                                checkboxs[nIndex] = inputs[i];
+                                nIndex++;
+                            }
+                        }
+                        //alert(checkboxs.length);
+                        for (var i = 0; i < checkboxs.length; i++) {
+                            if (checkboxs[i].checked == true) {
+                                var id = a_json[i][0];
+                                $.post("php/cartdelete.php", {
+                                    idinput: id,
+                                },
+                                    function (data, status) {
+                                    })
+                            }
+                        }
+                    });
+
+                $(".info ul li input:checked").closest(".info").remove();
+
+                amount();
+            })
+
+            $(".butt").click(function () {
+                $.ajaxSetup({
+                    async: false
+                });
+                $.post("php/cart.php",
+                    function (data, status) {
+                        //     if (data == "请先登录！") {
+                        //         window.location.href = "login.html";
+                        var a_json = eval(data);
+                        var div = document.getElementById("cart_con");
+                        var inputs = div.getElementsByTagName("input");
+                        //定义复选框数组，用来返回  
+                        var checkboxs = new Array();
+                        var nIndex = 0;
+                        for (var i = 0; i < inputs.length; i++) {
+                            //经过type是否为checkbox来判断复选框  
+                            if (inputs[i].type == "checkbox") {
+                                checkboxs[nIndex] = inputs[i];
+                                nIndex++;
+                            }
+                        }
+                        //alert(checkboxs.length);
+                        $.post("php/paymentclear.php", {
+                            idinput: id,
+                        },
+                            function (data, status) {
+                            })
+                        for (var i = 0; i < checkboxs.length; i++) {
+                            if (checkboxs[i].checked == true) {
+                                var id = a_json[i][0];
+
+                                // $.post("php/paymentclear.php", {
+                                //     idinput: id,
+                                // },
+                                //     function (data, status) {
+                                //     })
+                                $.post("php/paymentadd.php", {
+                                    idinput: id,
+                                },
+                                    function (data, status) {
+                                    })
+                            }
+                        }
+                    });
+                window.open("payment.html");
+            })
+        })
+    </script>
+
+
+</body>
+
+</html>

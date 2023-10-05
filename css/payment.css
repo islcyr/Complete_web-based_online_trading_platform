@@ -1,0 +1,294 @@
+body {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.buy-logo a:link {
+    color: #ff5000;
+    text-decoration: none;
+}
+
+.buy-logo a:visited {
+    color: #ff5000;
+    text-decoration: none;
+}
+
+.buy-logo a:hover {
+    color: #ff5000;
+    text-decoration: none;
+}
+
+.buy-logo a:active {
+    color: #ff5000;
+    text-decoration: none;
+}
+
+#order-stepbar {
+    width: auto;
+    height: 200px;
+    position: relative;
+}
+
+.order-stepbar .buy-logo {
+    display: inline-block;
+}
+
+#order-stepbar .buy-logo a {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 170px;
+    height: 35px;
+    font-size: 35px;
+    color: #fff;
+}
+
+.item-header {
+    height: 50px;
+    /* background: lawngreen; */
+}
+
+.item-header .header-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+    /* background: lawngreen; */
+}
+
+.header-wrapper .header-title {
+    line-height: 25px;
+    color: #333;
+    font-weight: 700;
+    font-size: 18px;
+    /* background: lawngreen; */
+}
+
+.item-headers-wrap {
+    margin-top: 15px;
+    color: #6c6c6c;
+}
+
+.item-headers-wrap .item-headers-content {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-bottom: 3px solid #b2d1ff;
+    font-size: 12px;
+    vertical-align: bottom;
+}
+
+.item-headers-0 {
+    width: 40%;
+    margin-left: 0%;
+}
+
+.item-headers-1,
+.item-headers-3 {
+    /* margin-left: 1%; */
+    width: 20%;
+}
+
+.item-headers-2 {
+    width: 18%;
+}
+
+.dinamicx-card-group {
+    border: 0px solid black;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-shrink: 0;
+}
+
+.order-itemInfo {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    height: 200px;
+}
+
+.order-itemInfo .info-detail {
+    width: 100%;
+    padding: 10px 0 10px 10px;
+}
+
+.info-detail .order-link {
+    width: 20%;
+    height: 250%;
+}
+
+
+/* .order-item-detail .info-cell {
+    display: inline-block;
+    box-sizing: content-box;
+} */
+
+.order-link .info-img {
+    /* display: block; */
+    width: 30%;
+}
+
+img {
+    border: none;
+    height: 30%;
+    width: 30%;
+}
+
+
+/* .order-itemInfo .info-sku {
+    color: #6c6c6c;
+    width: 20%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 0;
+} */
+
+.info-detail .info-msg {
+    padding-left: 35%;
+    vertical-align: middle;
+    margin-top: -38%;
+}
+
+.info-msg .info-title {
+    color: #3c3c3c;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.order-price {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    width: 20%;
+    padding: 10px 0;
+}
+
+.order-price .info-price {
+    color: #3c3c3c;
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.order-quantity {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    width: 18%;
+    padding: 5px 0;
+}
+
+.order-quantity .quantity-inner {
+    color: #3c3c3c;
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+}
+
+.quantity-inner p {
+    font-weight: 400;
+}
+
+.item-row .item-row__price {
+    display: inline-block;
+    width: 20%;
+    padding: 10px 0;
+    text-align: right;
+}
+
+.item-row .item-row__price-item {
+    padding: 10px 0 5px;
+    text-align: center;
+}
+
+.box {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.box .box__wrapper {
+    display: inline-block;
+    border: 1px solid #ff0036;
+}
+
+.box__wrapper .box__shadow {
+    border: 3px solid #fff0e8;
+    min-width: 230px;
+    padding: 10px 5px 10px 20px;
+}
+
+.realpay--title {
+    font-weight: 700;
+    color: #333;
+}
+
+.realpay--price-symbol {
+    font-size: 26px;
+    margin-right: 4px;
+    color: #999;
+}
+
+.realpay--price {
+    color: #ff0036;
+    font: 700 30px tahoma;
+}
+
+.order-confirmAddr {
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.order-confirmAddr .confirmAddr-title {
+    font-weight: 700;
+    color: #333;
+}
+
+.order-confirmAddr .confirmAddr-title {
+    font-weight: 700;
+    color: #333;
+}
+
+.order-confirm-eticket {
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.submitOrder-container {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.submitOrder-container .wrapper {
+    display: inline-block;
+    padding: 0 0 5px 5px;
+}
+
+.submitOrder-container .go-back {
+    color: #36c;
+    text-decoration: none;
+    margin-right: 50px;
+    line-height: 34px;
+}
+
+.submitOrder-container .go-btn {
+    display: inline-block;
+    width: 182px;
+    height: 39px;
+    position: relative;
+    vertical-align: middle;
+    line-height: 39px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    background: #dd2727;
+    color: #fff;
+}

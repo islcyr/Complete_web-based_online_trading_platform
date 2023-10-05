@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>确认订单信息</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/payment.css" />
+    <script src="../js/libcert.js"></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+
+
+<body onload="myFunction()">
+    <div class="order-stepbar">
+        <h1 class="buy-logo">
+            <a href="Tmail.html" target="_blank" title="淘宝网">淘宝网</a>
+        </h1>
+    </div>
+    <div class="item-headers">
+        <div class="header-wrapper ">
+            <h2 class="header-title">确认订单信息</h2>
+        </div>
+        <div class="item-headers-wrap item-headers-column-4">
+            <div class="item-headers-content item-headers-0">店铺宝贝</div>
+            <div class="item-headers-content item-headers-1">单价</div>
+            <div class="item-headers-content item-headers-2">数量</div>
+            <div class="item-headers-content item-headers-3">小计</div>
+        </div>
+    </div>
+    <div data="[object Object]" extension="[object Object]" class="dinamicx-card-group">
+        <div
+            style="display: flex; flex-direction: column; justify-content: flex-start; align-items: stretch; margin: 0px; padding: 0px; background-color: rgb(251, 252, 255); border-bottom: 1px dotted rgb(221, 221, 221);">
+            <div style="padding: 0px;">
+                <!-- ************ -->
+                <div class="item-row" id="item_row_1">
+                    <div class="order-itemInfo">
+                        <div class="info-detail">
+                            <a href="item1.html" target="_blank" rel="noopener noreferrer" class="order-link">
+                                <img class="info-img" src="../images/1.jpg"></a>
+                            <div class="info-msg"><a href="item1.html" target="_blank" rel="noopener noreferrer"
+                                    class="info-title">小鹿兔轻lo连衣裙宫廷风裙子</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-price">
+                        <div class="info-price">278.00</div>
+                    </div>
+                    <div class="order-quantity">
+                        <div class="quantity-inner">
+                            <p id="1">1</p>
+                        </div>
+                    </div>
+                    <div class="item-row__price">
+                        <div class="label item-row__price-item">
+                            <span id="total_1"
+                                style="font-weight: bold; font-style: normal; text-decoration: none; color: rgb(255, 68, 0); font-size: 14px; min-width: 100px;">278.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-row" id="item_row_2">
+                    <div class="order-itemInfo">
+                        <div class="info-detail">
+                            <a href="item2.html" target="_blank" rel="noopener noreferrer" class="order-link">
+                                <img class="info-img" src="../images/2.jpg"></a>
+                            <div class="info-msg"><a href="item2.html" target="_blank" rel="noopener noreferrer"
+                                    class="info-title">白雪公主复古娃娃领毛呢外套</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-price">
+                        <div class="info-price">338.00</div>
+                    </div>
+                    <div class="order-quantity">
+                        <div class="quantity-inner">
+                            <p id="2">1</p>
+                        </div>
+                    </div>
+                    <div class="item-row__price">
+                        <div class="label item-row__price-item">
+                            <span id="total_2"
+                                style="font-weight: bold; font-style: normal; text-decoration: none; color: rgb(255, 68, 0); font-size: 14px; min-width: 100px;">338.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-row" id="item_row_3">
+                    <div class="order-itemInfo">
+                        <div class="info-detail">
+                            <a href="item3.html" target="_blank" rel="noopener noreferrer" class="order-link">
+                                <img class="info-img" src="../images/3.jpg"></a>
+                            <div class="info-msg"><a href="item3.html" target="_blank" rel="noopener noreferrer"
+                                    class="info-title">白雪公主联名撞色连帽套头绒衫</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-price">
+                        <div class="info-price">238.00</div>
+                    </div>
+                    <div class="order-quantity">
+                        <div class="quantity-inner">
+                            <p id="3">1</p>
+                        </div>
+                    </div>
+                    <div class="item-row__price">
+                        <div class="label item-row__price-item">
+                            <span id="total_3"
+                                style="font-weight: bold; font-style: normal; text-decoration: none; color: rgb(255, 68, 0); font-size: 14px; min-width: 100px;">238.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-row" id="item_row_4">
+                    <div class="order-itemInfo">
+                        <div class="info-detail">
+                            <a href="item4.html" target="_blank" rel="noopener noreferrer" class="order-link">
+                                <img class="info-img" src="../images/4.jpg"></a>
+                            <div class="info-msg"><a href="item4.html" target="_blank" rel="noopener noreferrer"
+                                    class="info-title">国家宝藏联名秋季古风连衣裙</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-price">
+                        <div class="info-price">258.00</div>
+                    </div>
+                    <div class="order-quantity">
+                        <div class="quantity-inner">
+                            <p id="4">1</p>
+                        </div>
+                    </div>
+                    <div class="item-row__price">
+                        <div class="label item-row__price-item">
+                            <span id="total_4"
+                                style="font-weight: bold; font-style: normal; text-decoration: none; color: rgb(255, 68, 0); font-size: 14px; min-width: 100px;">258.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- ************ -->
+            </div>
+        </div>
+
+        <div
+            style="display: flex; flex-direction: column; justify-content: flex-start; align-items: stretch; margin: 0px; padding: 0px; background-color: rgb(242, 247, 255); border-bottom: 1px dotted rgb(128, 178, 255);">
+            <div style="padding: 0px; border-top: 1px solid rgb(255, 255, 255);">
+                <div
+                    style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; margin: 0px; padding: 10px 0px;">
+                    <div style="padding: 0px;">
+                        <div class="label ">
+                            <span class="label__header"
+                                style="font-weight: normal; font-style: normal; text-decoration: none; font-size: 14px; min-width: 100px; margin-right: 10px;">合计金额(含运费)</span>
+                            <span id="sum_1"
+                                style="font-weight: bold; font-style: normal; text-decoration: none; color: rgb(255, 68, 0); font-size: 14px; min-width: 100px;">￥278.00</span>
+                        </div>
+                    </div>
+                    <div style="padding: 0px;">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="box">
+        <div class="box__wrapper">
+            <div class="box__shadow">
+                <div>
+                    <span class="realpay--title">实付款：</span>
+                    <span class="realpay--price-symbol">¥</span>
+                    <span id="sum_2" class="realpay--price" style="color: rgb(255, 80, 0);">278.00</span>
+                </div>
+                <div class="order-confirmAddr">
+                    <div class="confirmAddr-addr">
+                        <span class="confirmAddr-title">寄送至：</span>
+                        <!-- <span class="confirmAddr-addr-bd"> 黑龙江省 哈尔滨市 南岗区 花园街道 西大直街92号哈尔滨工业大学A01公寓</span> -->
+                        <input type="text" id="address" class="confirmAddr-addr-bd" value="地址"
+                            onFocus="if(value==defaultValue){value='';this.style.color='#000'}"
+                            onBlur="if(!value){value=defaultValue;this.style.color='#999'}"></input>
+                    </div>
+                    <div class="confirmAddr-addr-user">
+                        <span class="confirmAddr-title">收货人：</span>
+                        <!-- <span class="confirmAddr-addr-bd">尹岩泉 16675330339</span> -->
+                        <input type="text" id="name" class="confirmAddr-addr-bd" value="姓名"
+                            onFocus="if(value==defaultValue){value='';this.style.color='#000'}"
+                            onBlur="if(!value){value=defaultValue;this.style.color='#999'}"></input>
+                    </div>
+                </div>
+                <div class="order-confirm-eticket"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="submitOrder-container">
+        <div class="wrapper">
+            <a class="go-back" target="_self" role="button" title="{cartText}" href="Tmail.html">返回购物车</a>
+            <a role="button" onclick="dual_signature()" title="提交订单" class="go-btn"
+                style="background-color: rgb(255, 80, 0);">提交订单</a>
+        </div>
+    </div>
+
+    <script>
+
+        function myFunction() {
+            $.post("php/payment.php",
+                function (data, status) {
+                    //     if (data == "请先登录！") {
+                    //         window.location.href = "login.html";
+                    var a_json = eval(data);
+                    var goods_names = ["小鹿兔轻lo连衣裙宫廷风裙子", "白雪公主复古娃娃领毛呢外套", "白雪公主联名撞色连帽套头绒衫", "国家宝藏联名秋季古风连衣裙"];
+                    var id = [0, 0, 0, 0];
+                    var i, j;
+                    var sumnum = 0;
+                    for (i = 0; i <= 3; i++) {
+                        if (a_json[i][0] != null) {
+                            id[a_json[i][0] - 1] = 1;
+                            if (a_json[i][0] == "1") {
+                                var num = document.getElementById("1");
+                                num.innerHTML = parseFloat(a_json[i][1]);
+                                var total = String((parseFloat(a_json[i][2]) * parseFloat(a_json[i][1])).toFixed(2));
+                                $("#item_row_1").find("#total_1").html(total);
+                            }
+                            if (a_json[i][0] == "2") {
+                                var num = document.getElementById("2");
+                                num.innerHTML = parseFloat(a_json[i][1]);
+                                var total = String((parseFloat(a_json[i][2]) * parseFloat(a_json[i][1])).toFixed(2));
+                                $("#item_row_2").find("#total_2").html(total);
+                            }
+                            if (a_json[i][0] == "3") {
+                                var num = document.getElementById("3");
+                                num.innerHTML = parseFloat(a_json[i][1]);
+                                var total = String((parseFloat(a_json[i][2]) * parseFloat(a_json[i][1])).toFixed(2));
+                                $("#item_row_3").find("#total_3").html(total);
+                            }
+                            if (a_json[i][0] == "4") {
+                                var num = document.getElementById("4");
+                                num.innerHTML = parseFloat(a_json[i][1]);
+                                var total = String((parseFloat(a_json[i][2]) * parseFloat(a_json[i][1])).toFixed(2));
+                                $("#item_row_4").find("#total_4").html(total);
+                            }
+                            sumnum = sumnum + parseFloat(total);
+                        }
+                    }
+                    if (id[0] == 0)
+                        $("#item_row_1").remove();
+                    if (id[1] == 0)
+                        $("#item_row_2").remove();
+                    if (id[2] == 0)
+                        $("#item_row_3").remove();
+                    if (id[3] == 0)
+                        $("#item_row_4").remove();
+
+
+                    var sum = String(sumnum.toFixed(2));
+                    var sum1 = document.getElementById("sum_1");
+                    sum1.innerHTML = sum;
+                    var sum2 = document.getElementById("sum_2");
+                    sum2.innerHTML = sum;
+
+                }
+            );
+        }
+
+        function str2ab(str) {
+            const buf = new ArrayBuffer(str.length);
+            const bufView = new Uint8Array(buf);
+            for (let i = 0, strLen = str.length; i < strLen; i++) {
+                bufView[i] = str.charCodeAt(i);
+            }
+            return buf;
+        }
+
+        function ab2str(buf) {
+            return String.fromCharCode.apply(null, new Uint8Array(buf));
+        }
+
+        var r_pubKey = undefined;
+        var b_pubKey = undefined;
+        var cert = undefined;
+        var cert1 = undefined;
+
+        function getPubKey() {
+            if (r_pubKey != undefined)
+                return r_pubKey;
+            getCert("");
+            r_pubKey = cert.getPublicKey();
+            return r_pubKey;
+        }
+
+        function getPubKeyBank() {
+            if (b_pubKey != undefined)
+                return b_pubKey;
+            getCert("http://mycaserver.com/");
+            b_pubKey = cert1.getPublicKey();
+            return b_pubKey;
+        }
+
+        function getCert(target) {
+            $.ajax({
+                type: "get",
+                url: target + "php/certificate.php",
+                async: false,
+                success: function (data) {
+                    var certstr = data.replace("-----BEGIN CERTIFICATE-----", "")
+                        .replace("-----END CERTIFICATE-----", "").replace("\r", "").replace("\n", "");
+                    var certab = str2ab(window.atob(certstr));
+                    setCertificateBuffer(certab);
+                    cert = parseCertificate();
+                },
+                error: (error) => console.log(error)
+            });
+        };
+
+        function getCertbank(target) {
+            $.ajax({
+                type: "get",
+                url: target + "certificate.php",
+                async: false,
+                success: function (data) {
+                    var certstr = data.replace("-----BEGIN CERTIFICATE-----", "")
+                        .replace("-----END CERTIFICATE-----", "").replace("\r", "").replace("\n", "");
+                    var certab = str2ab(window.atob(certstr));
+                    setCertificateBuffer(certab);
+                    cert1 = parseCertificate();
+                },
+                error: (error) => console.log(error)
+            });
+        };
+
+        async function verify(plaintext) {
+            var publicKey = await getPubKey();
+            var ek = await window.crypto.subtle.exportKey("spki", publicKey);
+            var eks = window.btoa(ab2str(ek));
+
+            //var plaintext = JSON.stringify({ name: $('#username').val(), passwd: $("#password").val(), mailadd: $("#mailadd").val() })
+
+            var ob2 = await envelop(eks, plaintext);
+
+            return ob2;
+        };
+
+        async function verifybank(plaintext) {
+            var bankpubkey;//银行公钥
+            getCertbank("http://test.com/");
+            bankpubkey = await cert1.getPublicKey();
+            var ek = await window.crypto.subtle.exportKey("spki", bankpubkey);
+            var eks = window.btoa(ab2str(ek));
+
+            //var plaintext = JSON.stringify({ name: $('#username').val(), passwd: $("#password").val(), mailadd: $("#mailadd").val() })
+
+            var ob2 = await envelop(eks, plaintext);
+
+            return ob2;
+        };
+
+        async function envelop(publicKey, plaintext) {
+            var rsaoaep = {
+                name: "RSA-OAEP",
+                modulusLength: 2048,
+                publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+                hash: {
+                    name: "SHA-1"
+                },
+            }
+
+            var pubDer = window.atob(publicKey);
+            var binary = str2ab(pubDer);
+            var env_pubKey = await window.crypto.subtle.importKey("spki", binary, { name: "RSA-OAEP", hash: "SHA-1" }, true, ["encrypt"]);
+
+            var ktmp = new Uint8Array(32);//
+            var ivtmp = new Uint8Array(16);
+            window.crypto.getRandomValues(ktmp);
+            window.crypto.getRandomValues(ivtmp);
+            ktmp = ab2str(ktmp);
+            ivtmp = ab2str(ivtmp);
+            var p = CryptoJS.enc.Latin1.parse(ktmp);
+            var p1 = CryptoJS.enc.Latin1.parse(ivtmp);
+
+            var encrypt = CryptoJS.AES.encrypt(plaintext, p, {
+                iv: p1,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.ZeroPadding
+            });
+
+            var chead = await window.crypto.subtle.encrypt(rsaoaep, env_pubKey, str2ab(ktmp));
+            var mid = ab2str(chead);
+            chead = window.btoa(mid);
+            ivtmp = window.btoa(ivtmp);
+            var enctext = encrypt.toString();
+
+            return { head: chead, iv: ivtmp, body: enctext };
+        }
+
+        async function dual_signature() {
+            // $.ajaxSetup({
+            //     async: false
+            // });
+            $.post("php/dual_sign.php", {
+                sum: parseFloat($("#sum_2").html()),
+                num_1: $("#1").html(),
+                num_2: $("#2").html(),
+                num_3: $("#3").html(),
+                num_4: $("#4").html(),
+                addrinput: $("input#address").val(),
+                nameinput: $("input#name").val(),
+            },
+                async function (data, status) {
+                    var ch = [];
+                    ch = data.split("+");
+                    var PI = ch[0];
+                    // alert(PI);
+                    var OI = ch[1];
+                    var PIMD = CryptoJS.SHA256(PI).toString();
+                    var OIMD = CryptoJS.SHA256(OI).toString();
+                    var POMD = CryptoJS.SHA256(PIMD + OIMD).toString();
+                    var binaryDerString = window.atob(window.privKey);
+                    var binaryDer = str2ab(binaryDerString);
+                    var pubkey = await window.crypto.subtle.importKey(
+                        "pkcs8",
+                        binaryDer,
+                        {
+                            name: "RSASSA-PKCS1-v1_5",
+                            hash: "SHA-256"
+                        },
+                        true,
+                        ["sign"]
+                    );
+                    var DS = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", pubkey, str2ab(POMD)); //sign
+
+                    var DS1 = ab2str(DS);
+                    var DS2 = window.btoa(DS1);
+
+                    //verify
+                    //用户公钥
+                    var userpubkey = window.pubKey;
+                    var plaintext1 = JSON.stringify({
+                        OI: OI,
+                        PIMD: PIMD,
+                        DS: DS2
+                    })
+
+                    var ob2 = await verify(plaintext1);
+
+                    // var objci = {
+                    //     ciph: ob2,
+                    //     userpubkey: userpubkey
+                    // }
+
+                    $.post("php/dual_sign_shop.php", {
+                        ciph: ob2,
+                        userpubkey: userpubkey
+                    }, function (data, status) {
+                        // alert(data);
+                    });
+
+                    //bank
+
+                    var plaintext2 = JSON.stringify({
+                        PI: PI,
+                        OIMD: OIMD,
+                        DS: DS2
+                    })
+
+                    var ob3 = await verifybank(plaintext2);
+
+                    $.post("http://test.com/buyhandler.php", {
+                        ciph: ob3,
+                        userpubkey: userpubkey
+                    }, function (data, status) {
+                        alert(data);
+                    });
+
+                     //POST
+                    //替换对应网页URL
+                    window.location.href = "http://test.com/zhifu.php";
+                }
+            );
+        }
+    </script>
+</body>
